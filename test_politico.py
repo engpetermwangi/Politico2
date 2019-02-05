@@ -27,5 +27,17 @@ def test_get_all_political_parties():
     assert response.status_code == 200
 
 
+def test_get_specific_political_party():
+    # party with <party_id> 1 has been created thus party should be found
+    response = client.get("/parties/1")
+    assert response.status_code == 200
+
+
+def test_get_specific_nonexistent_political_party():
+    # party with <party_id> 5 has not been created thus party should not be found
+    response = client.get("/parties/5")
+    assert response.status_code == 404
+
+
 if __name__ == "__main__":
     pytest.main()
