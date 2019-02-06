@@ -1,0 +1,14 @@
+language: python
+
+python:
+  - "3.6"
+
+install:
+  - pip install -r requirements.txt
+  - pip install coveralls
+
+script:
+  - nosetests -v test_politico.py
+
+after_success:
+  - coveralls
